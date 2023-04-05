@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-
 export function Home() {
     const [kontant1, setKontant1] = useState<any>();
     const [kontant2, setKontant2] = useState<any>();
@@ -12,25 +11,20 @@ export function Home() {
     const [total1, setTotal1] = useState<any>(0);
     const [total2, setTotal2] = useState<any>(0);
 
+    useEffect(() => {
+        const $terminal1 = isNaN(parseInt(terminal1)) ? 0 : parseInt(terminal1);
+        const $terminal2 = isNaN(parseInt(terminal2)) ? 0 : parseInt(terminal2);
+        const $terminal3 = isNaN(parseInt(terminal3)) ? 0 : parseInt(terminal3);
+        const $terminal4 = isNaN(parseInt(terminal4)) ? 0 : parseInt(terminal4);
+        const $kontant1 = isNaN(parseInt(kontant1)) ? 0 : parseInt(kontant1);
+        const $total2 = isNaN(parseInt(total2)) ? 0 : parseInt(total2);
+        const $cover = isNaN(parseInt(cover)) ? 0 : parseInt(cover);
+        const newKontant1 = $kontant1 + $terminal1 + $terminal2 + $terminal3 + $terminal4 - $cover;
+        setTotal1(newKontant1);
 
-
-    useEffect(()=>{
-    
-        const t1 = isNaN(parseInt(terminal1)) ? 0:parseInt(terminal1);
-        const t2 = isNaN(parseInt(terminal2)) ? 0:parseInt(terminal2);
-        const t3 = isNaN(parseInt(terminal3)) ? 0:parseInt(terminal3);
-        const t4 = isNaN(parseInt(terminal4)) ? 0:parseInt(terminal4);
-        const k1 =  isNaN(parseInt(kontant1)) ? 0:parseInt(kontant1);
-        const to2 =  isNaN(parseInt(total2)) ? 0:parseInt(total2);
-        const c = isNaN(parseInt(cover)) ? 0:parseInt(cover);
-        const newKontant1 = k1 + t1 + t2 + t3 + t4 - c
-        setTotal1(newKontant1)
-
-        const newKontant2 = (t1 + t1 + t2 + t3+ t4 - c) - to2
-        setKontant2(newKontant2)
-
-    })
-
+        const newKontant2 = $kontant1 + $terminal1 + $terminal2 + $terminal3 + $terminal4 - ($cover + $total2);
+        setKontant2(newKontant2);
+    });
 
     return (
         <div className="flex text-base">
