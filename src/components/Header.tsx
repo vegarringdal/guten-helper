@@ -1,11 +1,5 @@
 import React from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { guiStore } from "../state/guiStore";
-import { routes } from "../routes/routes";
 import { themeStore } from "../state/themeStore";
-import { classes, classIf } from "../utils/tailwindhelpers";
-import { DarkModeIcon } from "./DarkModeIcon";
-import { SettingsIcon } from "./SettingsIcon";
 
 // change me
 const HeaderTitle = "Kasså";

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { guiStore } from "../../state/guiStore";
+
 
 export function Home() {
     const [kontant1, setKontant1] = useState<any>();
@@ -9,18 +9,25 @@ export function Home() {
     const [terminal2, setTerminal2] = useState<any>();
     const [terminal3, setTerminal3] = useState<any>();
     const [terminal4, setTerminal4] = useState<any>();
-    const [total1, setTotal1] = useState<any>();
-    const [total2, setTotal2] = useState<any>();
+    const [total1, setTotal1] = useState<any>(0);
+    const [total2, setTotal2] = useState<any>(0);
+
 
 
     useEffect(()=>{
-     
-        const terminals = (terminal1 || 0)+(terminal2 || 0)+(terminal3 || 0)+(terminal4 || 0)
-        const newKontant1 = (kontant1 || 0) - ((cover || 0) + terminals)
-        setTotal1(newKontant1 || undefined)
+    
+        const t1 = isNaN(parseInt(terminal1)) ? 0:parseInt(terminal1);
+        const t2 = isNaN(parseInt(terminal2)) ? 0:parseInt(terminal2);
+        const t3 = isNaN(parseInt(terminal3)) ? 0:parseInt(terminal3);
+        const t4 = isNaN(parseInt(terminal4)) ? 0:parseInt(terminal4);
+        const k1 =  isNaN(parseInt(kontant1)) ? 0:parseInt(kontant1);
+        const to2 =  isNaN(parseInt(total2)) ? 0:parseInt(total2);
+        const c = isNaN(parseInt(cover)) ? 0:parseInt(cover);
+        const newKontant1 = k1 + t1 + t2 + t3 + t4 - c
+        setTotal1(newKontant1)
 
-        const newKontant2 = (total2 || 0) - ((cover || 0) + terminals)
-        setKontant2(newKontant2 || undefined)
+        const newKontant2 = (t1 + t1 + t2 + t3+ t4 - c) - to2
+        setKontant2(newKontant2)
 
     })
 
@@ -36,6 +43,7 @@ export function Home() {
                                 onChange={(e) => setKontant1(e.target.value)}
                                 value={kontant1 || ""}
                                 type="number"
+                                placeholder="0"
                                 onKeyDown={(event) => (event.key === "." ? false : true)}
                                 className="outline-none focus:border=gray w-full p-1 focus:border-dashed focus:border border-gray-800 text-right text-right"
                             />
@@ -44,8 +52,9 @@ export function Home() {
                             <input
                                 value={kontant2 || ""}
                                 type="number"
+                                placeholder="0"
                                 onKeyDown={(event) => (event.key === "." ? false : true)}
-                                className="outline-none focus:border=gray w-full p-1 bg-gray-400 text-right"
+                                className="outline-none focus:border=gray w-full p-1 bg-gray-400/50 text-right"
                                 readOnly
                             />
                         </div>
@@ -59,6 +68,7 @@ export function Home() {
                                 onChange={(e) => setCover(e.currentTarget.valueAsNumber)}
                                 value={cover || ""}
                                 type="number"
+                                placeholder="0"
                                 onKeyDown={(event) => (event.key === "." ? false : true)}
                                 className="outline-none focus:border=gray w-full p-1 focus:border-dashed focus:border border-gray-800 text-right"
                             />
@@ -67,8 +77,9 @@ export function Home() {
                             <input
                                 value={cover || ""}
                                 type="number"
+                                placeholder="0"
                                 onKeyDown={(event) => (event.key === "." ? false : true)}
-                                className="outline-none focus:border=gray w-full p-1 bg-gray-400 text-right"
+                                className="outline-none focus:border=gray w-full p-1 bg-gray-400/50 text-right"
                                 readOnly
                             />
                         </div>
@@ -82,6 +93,7 @@ export function Home() {
                                 onChange={(e) => setTerminal1(e.currentTarget.valueAsNumber)}
                                 value={terminal1 || ""}
                                 type="number"
+                                placeholder="0"
                                 onKeyDown={(event) => (event.key === "." ? false : true)}
                                 className="outline-none focus:border=gray w-full p-1 focus:border-dashed focus:border border-gray-800 text-right"
                             />
@@ -90,8 +102,9 @@ export function Home() {
                             <input
                                 value={terminal1 || ""}
                                 type="number"
+                                placeholder="0"
                                 onKeyDown={(event) => (event.key === "." ? false : true)}
-                                className="outline-none focus:border=gray w-full p-1 bg-gray-400 text-right"
+                                className="outline-none focus:border=gray w-full p-1 bg-gray-400/50 text-right"
                                 readOnly
                             />
                         </div>
@@ -105,6 +118,7 @@ export function Home() {
                                 onChange={(e) => setTerminal2(e.currentTarget.valueAsNumber)}
                                 value={terminal2 || ""}
                                 type="number"
+                                placeholder="0"
                                 onKeyDown={(event) => (event.key === "." ? false : true)}
                                 className="outline-none focus:border=gray w-full p-1 focus:border-dashed focus:border border-gray-800 text-right"
                             />
@@ -113,8 +127,9 @@ export function Home() {
                             <input
                                 value={terminal2 || ""}
                                 type="number"
+                                placeholder="0"
                                 onKeyDown={(event) => (event.key === "." ? false : true)}
-                                className="outline-none focus:border=gray w-full p-1 bg-gray-400 text-right"
+                                className="outline-none focus:border=gray w-full p-1 bg-gray-400/50 text-right"
                                 readOnly
                             />
                         </div>
@@ -128,6 +143,7 @@ export function Home() {
                                 onChange={(e) => setTerminal3(e.currentTarget.valueAsNumber)}
                                 value={terminal3 || ""}
                                 type="number"
+                                placeholder="0"
                                 onKeyDown={(event) => (event.key === "." ? false : true)}
                                 className="outline-none focus:border=gray w-full p-1 focus:border-dashed focus:border border-gray-800 text-right"
                             />
@@ -136,8 +152,9 @@ export function Home() {
                             <input
                                 value={terminal3 || ""}
                                 type="number"
+                                placeholder="0"
                                 onKeyDown={(event) => (event.key === "." ? false : true)}
-                                className="outline-none focus:border=gray w-full p-1 bg-gray-400 text-right"
+                                className="outline-none focus:border=gray w-full p-1 bg-gray-400/50 text-right"
                                 readOnly
                             />
                         </div>
@@ -151,6 +168,7 @@ export function Home() {
                                 onChange={(e) => setTerminal4(e.currentTarget.valueAsNumber)}
                                 value={terminal4 || ""}
                                 type="number"
+                                placeholder="0"
                                 onKeyDown={(event) => (event.key === "." ? false : true)}
                                 className="outline-none focus:border=gray w-full p-1 focus:border-dashed focus:border border-gray-800 text-right"
                             />
@@ -159,8 +177,9 @@ export function Home() {
                             <input
                                 value={terminal4 || ""}
                                 type="number"
+                                placeholder="0"
                                 onKeyDown={(event) => (event.key === "." ? false : true)}
-                                className="outline-none focus:border=gray w-full p-1 bg-gray-400 text-right"
+                                className="outline-none focus:border=gray w-full p-1 bg-gray-400/50 text-right"
                                 readOnly
                             />
                         </div>
@@ -173,8 +192,9 @@ export function Home() {
                             <input
                                 value={total1 || ""}
                                 type="number"
+                                placeholder="0"
                                 onKeyDown={(event) => (event.key === "." ? false : true)}
-                                className="outline-none focus:border=gray w-full p-1  bg-gray-400 text-right"
+                                className="outline-none focus:border=gray w-full p-1  bg-gray-400/50 text-right"
                                 readOnly
                             />
                         </div>
@@ -183,6 +203,7 @@ export function Home() {
                                 onChange={(e) => setTotal2(e.currentTarget.valueAsNumber)}
                                 value={total2 || ""}
                                 type="number"
+                                placeholder="0"
                                 onKeyDown={(event) => (event.key === "." ? false : true)}
                                 className="outline-none focus:border=gray w-full p-1 focus:border-dashed focus:border border-gray-800 text-right"
                             />
