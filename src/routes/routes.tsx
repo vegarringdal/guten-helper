@@ -8,7 +8,7 @@ import { Home } from "./home/Home";
 export const routes = [
     {
         name: "Home",
-        path: "/",
+        path: "*",
         element: <Home />
     }
 ];
