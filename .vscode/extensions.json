@@ -1,0 +1,12 @@
+{
+    "recommendations": [
+        "eamodio.gitlens",
+        "pflannery.vscode-versionlens",
+        "esbenp.prettier-vscode",
+        "gruntfuggly.todo-tree",
+        "bradlc.vscode-tailwindcss",
+        "humao.rest-client",
+        "ms-vscode-remote.vscode-remote-extensionpack",
+        "ms-vscode-remote.remote-containers"
+    ]
+}

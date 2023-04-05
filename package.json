@@ -1,0 +1,96 @@
+{
+    "name": "guten-helper",
+    "version": "0.0.0",
+    "author": "vegar.ringdal@gmail.com",
+    "scripts": {
+        "start": "run-p -s -l app:*",
+        "app:start": "vite --force",
+        "app:typechecker": "npm run typecheck:watch",
+        "typecheck": "node ./typecheck.js",
+        "typecheck:watch": "node ./typecheck_watch.js",
+        "build": "vite build",
+        "eslint": "eslint ./src/**/*.{js,ts,tsx}",
+        "eslint:fix": "eslint --fix ./src/**/*.{js,ts,tsx}",
+        "test": "vitest run",
+        "testing": "vitest"
+    },
+    "devDependencies": {
+        "@azure/msal-browser": "^2.35.0",
+        "@testing-library/react": "^14.0.0",
+        "@types/react": "^18.0.33",
+        "@types/react-dom": "^18.0.11",
+        "@typescript-eslint/eslint-plugin": "^5.57.1",
+        "@typescript-eslint/parser": "^5.57.1",
+        "@vitejs/plugin-react": "^3.1.0",
+        "autoprefixer": "^10.4.14",
+        "bs-logger": "^0.2.6",
+        "esbuild": "^0.17.15",
+        "esbuild-helpers": "^1.0.0",
+        "eslint": "^8.37.0",
+        "eslint-config-prettier": "^8.8.0",
+        "eslint-plugin-jsx-a11y": "^6.7.1",
+        "eslint-plugin-prettier": "^4.2.1",
+        "eslint-plugin-react": "^7.32.2",
+        "eslint-plugin-react-hooks": "^4.6.0",
+        "jsdom": "^21.1.1",
+        "lodash.memoize": "^4.1.2",
+        "npm-run-all": "^4.1.5",
+        "postcss": "^8.4.21",
+        "prettier": "^2.8.7",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-router-dom": "^6.10.0",
+        "standard-version": "^9.5.0",
+        "tailwindcss": "^3.3.1",
+        "typescript": "^5.0.3",
+        "vite": "^4.2.1",
+        "vitest": "^0.29.8",
+        "zustand": "^4.3.7",
+        "@headlessui/react": "^1.7.10",
+        "@heroicons/react": "^2.0.15"
+    },
+    "commit-and-tag-version": {
+        "types": [
+            {
+                "type": "feat",
+                "section": "Features"
+            },
+            {
+                "type": "fix",
+                "section": "Bug Fixes"
+            },
+            {
+                "type": "chore",
+                "hidden": true
+            },
+            {
+                "type": "docs",
+                "hidden": true
+            },
+            {
+                "type": "style",
+                "hidden": true
+            },
+            {
+                "type": "refactor",
+                "hidden": true
+            },
+            {
+                "type": "perf",
+                "hidden": true
+            },
+            {
+                "type": "test",
+                "hidden": true
+            }
+        ],
+        "bumpFiles": [
+            {
+                "filename": "package.json",
+                "type": "json"
+            }
+        ],
+        "commitUrlFormat": "https://github.com/vegarringdal/guten-helper/commits/{{hash}}",
+        "compareUrlFormat": "https://github.com/vegarringdal/guten-helper/compare/{{previousTag}}...{{currentTag}}"
+    }
+}
