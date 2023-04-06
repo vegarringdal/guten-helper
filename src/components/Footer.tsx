@@ -12,7 +12,7 @@ declare const APP_VERSION: string;
 export function Footer() {
     return (
         <footer className="flex text-center bg-gray-300 dark:bg-gray-700 dark:text-gray-300 ">
-            <div className="flex m-1">version: {APP_VERSION}</div>
+            <div className="flex m-1">{new Date().toDateString()}</div>
         </footer>
     );
 }

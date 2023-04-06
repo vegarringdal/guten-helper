@@ -22,24 +22,31 @@ export function Home() {
         const newKontant1 = $kontant1 + $terminal1 + $terminal2 + $terminal3 + $terminal4 - $cover;
         setTotal1(newKontant1);
 
-        const newKontant2 = $kontant1 + $terminal1 + $terminal2 + $terminal3 + $terminal4 - ($cover + $total2);
+        const terminals = $terminal1 + $terminal2 + $terminal3 + $terminal4;
+        const newKontant2 = $cover + $total2 - terminals;
         setKontant2(newKontant2);
     });
 
     return (
         <div className="flex text-base">
-            <div className="flex flex-col flex-1  text">
+            <div className="flex flex-col flex-1 text m-auto container">
                 <div className="flex flex-1 flex-col">
-                    <div className="p-1  text-gray-500 m-auto">Kontant</div>
+                    <div className="p-1  text-gray-300 m-auto">Kontant</div>
                     <div className="flex-1 p-1 flex dark:text-gray-800">
-                        <div className="flex-1 p-1 m-auto">
+                        <div className="flex flex-1 p-1 m-auto">
+                            <div className="flex-1"></div>
                             <input
                                 onChange={(e) => setKontant1(e.target.value)}
                                 value={kontant1 || ""}
                                 type="number"
                                 placeholder="0"
-                                onKeyDown={(event) => (event.key === "." ? false : true)}
-                                className="outline-none focus:border=gray w-full p-1 focus:border-dashed focus:border border-gray-800 text-right text-right"
+                                onKeyDown={(event) => {
+                                    if (event.code === "Period") {
+                                        event.preventDefault();
+                                        return false;
+                                    }
+                                }}
+                                className="outline-none max-w-[150px] focus:border=gray w-full p-1 focus:border-dashed focus:border border-gray-800 text-right"
                             />
                         </div>
                         <div className="flex-1 p-1 m-auto">
@@ -47,24 +54,35 @@ export function Home() {
                                 value={kontant2 || ""}
                                 type="number"
                                 placeholder="0"
-                                onKeyDown={(event) => (event.key === "." ? false : true)}
-                                className="outline-none focus:border=gray w-full p-1 bg-gray-400/50 text-right"
+                                onKeyDown={(event) => {
+                                    if (event.code === "Period") {
+                                        event.preventDefault();
+                                        return false;
+                                    }
+                                }}
+                                className="outline-none max-w-[150px] focus:border=gray w-full p-1 bg-gray-400/50 text-white text-right"
                                 readOnly
                             />
                         </div>
                     </div>
                 </div>
                 <div className="flex flex-1 flex-col">
-                    <div className="p-1  text-gray-500 m-auto">Cover</div>
+                    <div className="p-1  text-gray-300 m-auto">Cover</div>
                     <div className="flex-1 p-1 flex dark:text-gray-800">
-                        <div className="flex-1 p-1 m-auto">
+                        <div className="flex flex-1 p-1 m-auto">
+                            <div className="flex-1"></div>
                             <input
                                 onChange={(e) => setCover(e.currentTarget.valueAsNumber)}
                                 value={cover || ""}
                                 type="number"
                                 placeholder="0"
-                                onKeyDown={(event) => (event.key === "." ? false : true)}
-                                className="outline-none focus:border=gray w-full p-1 focus:border-dashed focus:border border-gray-800 text-right"
+                                onKeyDown={(event) => {
+                                    if (event.code === "Period") {
+                                        event.preventDefault();
+                                        return false;
+                                    }
+                                }}
+                                className="outline-none max-w-[150px] focus:border=gray w-full p-1 focus:border-dashed focus:border border-gray-800 text-right"
                             />
                         </div>
                         <div className="flex-1 p-1 m-auto">
@@ -72,24 +90,35 @@ export function Home() {
                                 value={cover || ""}
                                 type="number"
                                 placeholder="0"
-                                onKeyDown={(event) => (event.key === "." ? false : true)}
-                                className="outline-none focus:border=gray w-full p-1 bg-gray-400/50 text-right"
+                                onKeyDown={(event) => {
+                                    if (event.code === "Period") {
+                                        event.preventDefault();
+                                        return false;
+                                    }
+                                }}
+                                className="outline-none max-w-[150px] focus:border=gray w-full p-1 bg-gray-400/50 text-white text-right"
                                 readOnly
                             />
                         </div>
                     </div>
                 </div>
                 <div className="flex flex-1 flex-col">
-                    <div className="p-1  text-gray-500 m-auto">Term 1</div>
+                    <div className="p-1  text-gray-300 m-auto">Term 1</div>
                     <div className="flex-1 p-1 flex dark:text-gray-800">
-                        <div className="flex-1 p-1 m-auto">
+                        <div className="flex flex-1 p-1 m-auto">
+                            <div className="flex-1"></div>
                             <input
                                 onChange={(e) => setTerminal1(e.currentTarget.valueAsNumber)}
                                 value={terminal1 || ""}
                                 type="number"
                                 placeholder="0"
-                                onKeyDown={(event) => (event.key === "." ? false : true)}
-                                className="outline-none focus:border=gray w-full p-1 focus:border-dashed focus:border border-gray-800 text-right"
+                                onKeyDown={(event) => {
+                                    if (event.code === "Period") {
+                                        event.preventDefault();
+                                        return false;
+                                    }
+                                }}
+                                className="outline-none max-w-[150px] focus:border=gray w-full p-1 focus:border-dashed focus:border border-gray-800 text-right"
                             />
                         </div>
                         <div className="flex-1 p-1 m-auto">
@@ -97,24 +126,29 @@ export function Home() {
                                 value={terminal1 || ""}
                                 type="number"
                                 placeholder="0"
-                                onKeyDown={(event) => (event.key === "." ? false : true)}
-                                className="outline-none focus:border=gray w-full p-1 bg-gray-400/50 text-right"
+                                className="outline-none max-w-[150px] focus:border=gray w-full p-1 bg-gray-400/50 text-white text-right"
                                 readOnly
                             />
                         </div>
                     </div>
                 </div>
                 <div className="flex flex-1 flex-col">
-                    <div className="p-1  text-gray-500 m-auto">Term 2</div>
+                    <div className="p-1  text-gray-300 m-auto">Term 2</div>
                     <div className="flex-1 p-1 flex dark:text-gray-800">
-                        <div className="flex-1 p-1 m-auto">
+                        <div className="flex flex-1 p-1 m-auto">
+                            <div className="flex-1"></div>
                             <input
                                 onChange={(e) => setTerminal2(e.currentTarget.valueAsNumber)}
                                 value={terminal2 || ""}
                                 type="number"
                                 placeholder="0"
-                                onKeyDown={(event) => (event.key === "." ? false : true)}
-                                className="outline-none focus:border=gray w-full p-1 focus:border-dashed focus:border border-gray-800 text-right"
+                                onKeyDown={(event) => {
+                                    if (event.code === "Period") {
+                                        event.preventDefault();
+                                        return false;
+                                    }
+                                }}
+                                className="outline-none max-w-[150px] focus:border=gray w-full p-1 focus:border-dashed focus:border border-gray-800 text-right"
                             />
                         </div>
                         <div className="flex-1 p-1 m-auto">
@@ -122,24 +156,29 @@ export function Home() {
                                 value={terminal2 || ""}
                                 type="number"
                                 placeholder="0"
-                                onKeyDown={(event) => (event.key === "." ? false : true)}
-                                className="outline-none focus:border=gray w-full p-1 bg-gray-400/50 text-right"
+                                className="outline-none max-w-[150px] focus:border=gray w-full p-1 bg-gray-400/50 text-white text-right"
                                 readOnly
                             />
                         </div>
                     </div>
                 </div>
                 <div className="flex flex-1 flex-col">
-                    <div className="p-1  text-gray-500 m-auto">Term 3</div>
+                    <div className="p-1  text-gray-300 m-auto">Term 3</div>
                     <div className="flex-1 p-1 flex dark:text-gray-800">
-                        <div className="flex-1 p-1 m-auto">
+                        <div className="flex flex-1 p-1 m-auto">
+                            <div className="flex-1"></div>
                             <input
                                 onChange={(e) => setTerminal3(e.currentTarget.valueAsNumber)}
                                 value={terminal3 || ""}
                                 type="number"
                                 placeholder="0"
-                                onKeyDown={(event) => (event.key === "." ? false : true)}
-                                className="outline-none focus:border=gray w-full p-1 focus:border-dashed focus:border border-gray-800 text-right"
+                                onKeyDown={(event) => {
+                                    if (event.code === "Period") {
+                                        event.preventDefault();
+                                        return false;
+                                    }
+                                }}
+                                className="outline-none max-w-[150px] focus:border=gray w-full p-1 focus:border-dashed focus:border border-gray-800 text-right"
                             />
                         </div>
                         <div className="flex-1 p-1 m-auto">
@@ -147,24 +186,29 @@ export function Home() {
                                 value={terminal3 || ""}
                                 type="number"
                                 placeholder="0"
-                                onKeyDown={(event) => (event.key === "." ? false : true)}
-                                className="outline-none focus:border=gray w-full p-1 bg-gray-400/50 text-right"
+                                className="outline-none max-w-[150px] focus:border=gray w-full p-1 bg-gray-400/50 text-white text-right"
                                 readOnly
                             />
                         </div>
                     </div>
                 </div>
                 <div className="flex flex-1 flex-col">
-                    <div className="p-1  text-gray-500 m-auto">Term 4</div>
+                    <div className="p-1  text-gray-300 m-auto">Term 4</div>
                     <div className="flex-1 p-1 flex dark:text-gray-800">
-                        <div className="flex-1 p-1 m-auto">
+                        <div className="flex flex-1 p-1 m-auto">
+                            <div className="flex-1"></div>
                             <input
                                 onChange={(e) => setTerminal4(e.currentTarget.valueAsNumber)}
                                 value={terminal4 || ""}
                                 type="number"
                                 placeholder="0"
-                                onKeyDown={(event) => (event.key === "." ? false : true)}
-                                className="outline-none focus:border=gray w-full p-1 focus:border-dashed focus:border border-gray-800 text-right"
+                                onKeyDown={(event) => {
+                                    if (event.code === "Period") {
+                                        event.preventDefault();
+                                        return false;
+                                    }
+                                }}
+                                className="outline-none max-w-[150px] focus:border=gray w-full p-1 focus:border-dashed focus:border border-gray-800 text-right"
                             />
                         </div>
                         <div className="flex-1 p-1 m-auto">
@@ -172,23 +216,28 @@ export function Home() {
                                 value={terminal4 || ""}
                                 type="number"
                                 placeholder="0"
-                                onKeyDown={(event) => (event.key === "." ? false : true)}
-                                className="outline-none focus:border=gray w-full p-1 bg-gray-400/50 text-right"
+                                className="outline-none max-w-[150px] focus:border=gray w-full p-1 bg-gray-400/50 text-white text-right"
                                 readOnly
                             />
                         </div>
                     </div>
                 </div>
                 <div className="flex flex-1 flex-col">
-                    <div className="p-1  text-gray-500 m-auto">Total</div>
+                    <div className="p-1  text-gray-300 m-auto">Total</div>
                     <div className="flex-1 p-1 flex dark:text-gray-800">
-                        <div className="flex-1 p-1 m-auto">
+                        <div className="flex flex-1 p-1 m-auto">
+                            <div className="flex-1"></div>
                             <input
                                 value={total1 || ""}
                                 type="number"
                                 placeholder="0"
-                                onKeyDown={(event) => (event.key === "." ? false : true)}
-                                className="outline-none focus:border=gray w-full p-1  bg-gray-400/50 text-right"
+                                onKeyDown={(event) => {
+                                    if (event.code === "Period") {
+                                        event.preventDefault();
+                                        return false;
+                                    }
+                                }}
+                                className="outline-none max-w-[150px] focus:border=gray w-full p-1  bg-gray-400/50 text-white text-right "
                                 readOnly
                             />
                         </div>
@@ -198,8 +247,13 @@ export function Home() {
                                 value={total2 || ""}
                                 type="number"
                                 placeholder="0"
-                                onKeyDown={(event) => (event.key === "." ? false : true)}
-                                className="outline-none focus:border=gray w-full p-1 focus:border-dashed focus:border border-gray-800 text-right"
+                                onKeyDown={(event) => {
+                                    if (event.code === "Period") {
+                                        event.preventDefault();
+                                        return false;
+                                    }
+                                }}
+                                className="outline-none max-w-[150px] focus:border=gray w-full p-1 focus:border-dashed focus:border border-gray-800 text-right"
                             />
                         </div>
                     </div>
